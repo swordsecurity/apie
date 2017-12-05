@@ -53,3 +53,20 @@ $ apie.py github.yaml
 OK GitHub is online
 OK GitHub contains 'Built for developers'
 ```
+
+## Testing API with JWT token
+$ cat headerfile.yaml
+headers:
+    - name: 'Authorization'
+      value: 'Bearer [redacted]'
+
+$ cat testfile.yaml
+url: "http://localhost:3000/api"
+tests:
+    - name: "Secured API is online"
+      request: 'GET'
+      path: '/'
+      expected_status: 200
+
+$ apie.py testfile.yaml --header_file=headerfile.yaml
+OK Secured API is online
