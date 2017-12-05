@@ -1,0 +1,22 @@
+url: "https://httpbin.org"
+tests:
+    - name: "Api is online, test with get"
+      request: 'GET'
+      path: '/get'
+      expected_status: 200
+    - name: "Api is online, test with post"
+      request: 'POST'
+      path: '/post'
+      data:
+          username: 'test'
+      expected_status: 200
+    - name: "Api is online, test with put"
+      request: 'PUT'
+      path: '/put'
+      data:
+          username: 'test'
+      expected_status: 200
+    - name: "Api is online, test with delete"
+      request: 'DELETE'
+      path: '/delete'
+      expected_status: 200

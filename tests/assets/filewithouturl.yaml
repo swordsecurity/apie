@@ -1,0 +1,7 @@
+tests:
+    - name: "Api is online"
+      request: 'GET'
+      path: '/'
+    - name: "Api is online, accepts POST"
+      request: 'POST'
+      path: '/'

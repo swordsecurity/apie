@@ -1,0 +1,4 @@
+headers:
+    - value: 'Bearer [token]'
+    - name: 'WWW-Authenticate'
+      value: 'Basic realm="User Visible Realm"'

@@ -1,0 +1,4 @@
+headers:
+    - name: 'Authorization'
+    - name: 'WWW-Authenticate'
+      value: 'Basic realm="User Visible Realm"'

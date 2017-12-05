@@ -1,0 +1,14 @@
+url: "http://localhost"
+tests:
+    - request: 'GET'
+      path: '/'
+      expected_status: 200
+    - request: 'POST'
+      path: '/'
+      expected_content: '[]'
+    - request: 'POST'
+      path: '/'
+      expected_value: '[]'
+    - request: 'POST'
+      path: '/'
+      expected_header: 'Authorization: Bearer [token]'

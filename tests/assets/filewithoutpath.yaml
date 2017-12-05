@@ -1,0 +1,14 @@
+url: "http://localhost"
+tests:
+    - name: "Api is online, test with status"
+      request: 'GET'
+      expected_status: 200
+    - name: "Api is online, test with content"
+      request: 'POST'
+      expected_content: '[]'
+    - name: "Api is online, test with value"
+      request: 'POST'
+      expected_value: '[]'
+    - name: "Api is online, test with header"
+      request: 'POST'
+      expected_header: 'Authorization: Bearer [token]'
