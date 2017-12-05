@@ -55,6 +55,7 @@ OK GitHub contains 'Built for developers'
 ```
 
 ## Testing API with JWT token
+```
 $ cat headerfile.yaml
 headers:
     - name: 'Authorization'
@@ -70,3 +71,4 @@ tests:
 
 $ apie.py testfile.yaml --header_file=headerfile.yaml
 OK Secured API is online
+```
