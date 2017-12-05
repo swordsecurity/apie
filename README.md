@@ -1,7 +1,7 @@
 # Apie
 Test Restful API's using YAML files
 
-# Getting started
+## Getting started
 (optional) Setup virtualenv
 ```
 mkdir .venv
@@ -14,7 +14,7 @@ Install dependencies from requirements.txt
 pip3 install -r requirements.txt
 ```
 
-# Usage
+## Usage
 ```
 usage: apie.py [-h] [--header_file HEADER_FILE]
                [--example_test_file EXAMPLE_TEST_FILE]
@@ -34,8 +34,8 @@ optional arguments:
                         Show example headers YAML file
 ```
 
-# Examples
-## Testing GitHub status
+## Examples
+### Testing GitHub status
 ```
 $ cat github.yaml
 url: "https://github.com"
@@ -54,7 +54,7 @@ OK GitHub is online
 OK GitHub contains 'Built for developers'
 ```
 
-## Testing API with JWT token
+### Testing API with JWT token
 ```
 $ cat headerfile.yaml
 headers:
