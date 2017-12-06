@@ -10,6 +10,7 @@ def main(args):
 
 def parseFile(filename):
     data = {}
+    filename = os.path.realpath(filename)
     if not os.path.isfile(filename):
         raise Exception('file %s is not found' % filename)
 
@@ -33,7 +34,7 @@ def parseFile(filename):
             if test.get(exp) is not None:
                 exp_type = exp.replace('expected_','')
                 exp_value = test.get(exp)
-                expected[exp_type] = exp_value
+                expected[exp] = exp_value
 
         if len(expected) == 0:
             raise Exception("expected_* attribute not found in %s" % filename)

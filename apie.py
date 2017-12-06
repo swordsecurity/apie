@@ -18,11 +18,16 @@ def main(args):
         test = item['test']
         expected = item['expected']
         test_result, data = apie.tester.doTest(url,test,expected,global_headers)
+        print("Test: %s" % test['name'])
         if(test_result):
-            print("OK",test['name'])
+            print("Result: OK")
         else:
-            expected['actual'] = data
-            print("ERROR",test['name'],expected)
+            exp_type = expected.keys()[0]
+            actual_type = 'actual_%s' % exp_type.replace('expected_','')
+            expected[actual_type] = data
+            print("Result: ERROR")
+            print(expected)
+        print("") #newline
 
 if __name__ == '__main__':
     import sys

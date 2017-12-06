@@ -8,17 +8,17 @@ def main(args):
     print(assert_response(response,expected))
 
 def assert_response(response,expected):
-    if expected.get('status') is not None:
-        result = expected['status'] == response.status_code
+    if expected.get('expected_status') is not None:
+        result = expected['expected_status'] == response.status_code
         data = response.status_code
-    elif expected.get('content') is not None:
-        result = expected['content'].lower() in response.text.lower()
+    elif expected.get('expected_content') is not None:
+        result = expected['expected_content'].lower() in response.text.lower()
         data = response.text.lower()
-    elif expected.get('value') is not None:
-        result = expected['value'] == response.text
+    elif expected.get('expected_value') is not None:
+        result = expected['expected_value'] == response.text
         data = response.text
     else:
-        raise Exception('Expected is not status,content or value')
+        raise Exception('Expected is not expected_status,expected_content or expected_value')
 
     return result,data
 

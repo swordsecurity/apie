@@ -9,6 +9,7 @@ def main(args):
     print(parseFile(args['file']))
 
 def parseFile(filename):
+    filename = os.path.realpath(filename)
     if not os.path.isfile(filename):
         raise Exception('file %s is not found' % filename)
 
