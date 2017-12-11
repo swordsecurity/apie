@@ -3,7 +3,6 @@
 </div>
 
 # Restbot: Test Restful JSON API's using YAML files
-
 ## Features
 - Write test script in YAML.
 - GET, POST, PUT, DELETE requests.
@@ -25,22 +24,10 @@ pip3 install -r requirements.txt
 
 ## Usage
 ```
-usage: apie.py [-h] [--header_file HEADER_FILE]
-               [--example_test_file EXAMPLE_TEST_FILE]
-               [--example_header_file EXAMPLE_HEADER_FILE]
-               file
-
-positional arguments:
-  file                  Tests YAML file
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --header_file HEADER_FILE
-                        Headers YAML file
-  --example_test_file EXAMPLE_TEST_FILE
-                        Show example tests YAML file
-  --example_header_file EXAMPLE_HEADER_FILE
-                        Show example headers YAML file
+usage: restbot.py [-h] [--header_file HEADER_FILE]
+                  [--example_script EXAMPLE_SCRIPT]
+                  [--example_header_file EXAMPLE_HEADER_FILE]
+                  filename
 ```
 
 ## Examples
@@ -57,7 +44,7 @@ tests:
       path: '/'
       expected_content: "Built for developers"
 
-$ restbot.py github.yaml
+$ ./restbot.py github.yaml
 OK GitHub is online
 OK GitHub contains 'Built for developers'
 ```
