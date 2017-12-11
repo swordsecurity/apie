@@ -31,15 +31,13 @@ usage: restbot.py [-h] [--header_file HEADER_FILE]
 
 ## Test file
 A test file needs the following:
-|  |  |
-|--|--|
+--- | ---
 | **url** (required) | url of API endpoint |
 | **tests** (required) | list of specified tests |
 
 ### Tests
 The following parameters need to be used in a test:
-|  |  |
-|--|--|
+--- | ---
 | **name** | name of the test |
 | **request** | type of request (GET,POST,PUT,DELETE) |
 | **path** | path to endpoint |
@@ -50,8 +48,7 @@ The following parameters need to be used in a test:
 
 #### Headers
 The following format is used to define headers in a test:
-|  |  |
-|--|--|
+--- | ---
 | **name** | name of the header |
 | **value** | value of the header |
 
