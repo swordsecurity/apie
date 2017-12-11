@@ -7,13 +7,13 @@ from unittest import main
 import sys
 from os.path import dirname,realpath
 sys.path.append(dirname(dirname(realpath(__file__))))
-import lib.restbot.header_parser
+import app.restbot.header_parser
 
 class test_header_parser(TestCase):
 
     def test_parser_file(self):
         filename = dirname(realpath(__file__)) + "/assets/headerfile.yaml"
-        lib.restbot.header_parser.parseFile(filename)
+        app.restbot.header_parser.parseFile(filename)
         self.assertTrue(True)
 
     def test_parser_file_without_headers(self):
@@ -21,7 +21,7 @@ class test_header_parser(TestCase):
         result = None
         expected = 'headers attribute not found in %s' % filename
         try:
-            lib.restbot.header_parser.parseFile(filename)
+            app.restbot.header_parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -32,7 +32,7 @@ class test_header_parser(TestCase):
         result = None
         expected = 'name attribute not found in %s' % filename
         try:
-            lib.restbot.header_parser.parseFile(filename)
+            app.restbot.header_parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -43,7 +43,7 @@ class test_header_parser(TestCase):
         result = None
         expected = 'value attribute not found in %s' % filename
         try:
-            lib.restbot.header_parser.parseFile(filename)
+            app.restbot.header_parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
