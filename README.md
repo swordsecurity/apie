@@ -6,7 +6,6 @@
 ## Features
 - Write test script in YAML.
 - GET, POST, PUT, DELETE requests.
-- Supports JWT Authentication.
 - Assert with status, content (includes, case-insensitive) or value (exact match)
 
 ## Prerequisites
@@ -29,6 +28,30 @@ usage: restbot.py [-h] [--header_file HEADER_FILE]
                   [--example_header_file EXAMPLE_HEADER_FILE]
                   filename
 ```
+
+## Test file
+A test file needs the following:
+| **url** (required) | url of API endpoint |
+| **tests** (required) | list of specified tests |
+
+### Tests
+The following parameters need to be used in a test:
+|  |  |
+|--|--|
+| **name** | name of the test |
+| **request** | type of request (GET,POST,PUT,DELETE) |
+| **path** | path to endpoint |
+| **expected_status** (optional) | expected status code |
+| **expected_content** (optional) | expected value in response (case-insensitive) |
+| **expected_value** (optional) | expected exact value |
+| **headers** (optional) | list of specified headers |
+
+#### Headers
+The following format is used to define headers in a test:
+|  |  |
+|--|--|
+| **name** | name of the header |
+| **value** | value of the header |
 
 ## Examples
 Example test script (github.yaml):
