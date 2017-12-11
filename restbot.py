@@ -1,23 +1,25 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import apie.parser
-import apie.header_parser
-import apie.asserter
-import apie.tester
+import lib.restbot.parser
+import lib.restbot.header_parser
+import lib.restbot.asserter
+import lib.restbot.tester
 from os.path import dirname,realpath
 
 def main(args):
     global_headers = {}
     if args.get('header_file') is not None:
-        global_headers = apie.header_parser.parseFile(args['header_file'])
+        global_headers = lib.restbot.header_parser.parseFile(args['header_file'])
 
-    testdata = apie.parser.parseFile(args['file'])
+    global_headers['Content-Type'] = 'application/json'
+    
+    testdata = lib.restbot.parser.parseFile(args['filename'])
     url = testdata['url']
     for item in testdata['tests']:
         test = item['test']
         expected = item['expected']
-        test_result, data = apie.tester.doTest(url,test,expected,global_headers)
+        test_result, data = lib.restbot.tester.doTest(url,test,expected,global_headers)
         print("Test: %s" % test['name'])
         if(test_result):
             print("Result: OK")
@@ -31,7 +33,7 @@ def main(args):
 
 if __name__ == '__main__':
     import sys
-    if '--example_test_file' in sys.argv:
+    if '--example_script' in sys.argv:
         with open(dirname(realpath(__file__)) + "/tests/assets/testfile.yaml",'r') as f:
             print(f.read())
             exit()
@@ -42,9 +44,9 @@ if __name__ == '__main__':
 
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("file", help="Tests YAML file")
+    parser.add_argument("filename", help="Test script (.yaml)")
     parser.add_argument("--header_file", help="Headers YAML file")
-    parser.add_argument("--example_test_file", help="Show example tests YAML file")
+    parser.add_argument("--example_script", help="Show example tests YAML file")
     parser.add_argument("--example_header_file", help="Show example headers YAML file")
     argv = parser.parse_args()
     main(vars(argv))

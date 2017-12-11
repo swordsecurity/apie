@@ -1,16 +1,25 @@
-# Apie
-Test Restful API's using YAML files
+<div align="center">
+  <img src="./docs/assets/logo.png"><br><br>
+</div>
 
-## Getting started
-(optional) Setup virtualenv
-```
-mkdir .venv
-virtualenv -p python3 .venv/
-source .venv/bin/activate
-```
+# Restbot: Test Restful JSON API's using YAML files
 
+## Features
+- Write test script in YAML.
+- GET, POST, PUT, DELETE requests.
+- Supports JWT Authentication.
+- Assert with status, content (includes, case-insensitive) or value (exact match)
+
+## Prerequisites
+To run Restbot, you will need the following:
+- git
+- python3
+- pip3
+
+## Installation
 Install dependencies from requirements.txt
 ```
+git clone [this repository]
 pip3 install -r requirements.txt
 ```
 
@@ -35,9 +44,8 @@ optional arguments:
 ```
 
 ## Examples
-### Testing GitHub status
+Example test script (github.yaml):
 ```
-$ cat github.yaml
 url: "https://github.com"
 tests:
     - name: "GitHub is online"
@@ -49,26 +57,7 @@ tests:
       path: '/'
       expected_content: "Built for developers"
 
-$ apie.py github.yaml
+$ restbot.py github.yaml
 OK GitHub is online
 OK GitHub contains 'Built for developers'
-```
-
-### Testing API with JWT token
-```
-$ cat headerfile.yaml
-headers:
-    - name: 'Authorization'
-      value: 'Bearer [redacted]'
-
-$ cat testfile.yaml
-url: "http://localhost:3000/api"
-tests:
-    - name: "Secured API is online"
-      request: 'GET'
-      path: '/'
-      expected_status: 200
-
-$ apie.py testfile.yaml --header_file=headerfile.yaml
-OK Secured API is online
 ```

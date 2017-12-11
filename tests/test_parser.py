@@ -7,13 +7,13 @@ from unittest import main
 import sys
 from os.path import dirname,realpath
 sys.path.append(dirname(dirname(realpath(__file__))))
-import apie.parser
+import lib.restbot.parser
 
 class test_parser_file(TestCase):
 
     def test_parser_file(self):
         filename = dirname(realpath(__file__)) + "/assets/testfile.yaml"
-        apie.parser.parseFile(filename)
+        lib.restbot.parser.parseFile(filename)
         self.assertTrue(True)
 
     def test_parser_filewithouturl(self):
@@ -21,7 +21,7 @@ class test_parser_file(TestCase):
         result = None
         expected = 'url attribute not found in %s' % filename
         try:
-            apie.parser.parseFile(filename)
+            lib.restbot.parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -32,7 +32,7 @@ class test_parser_file(TestCase):
         result = None
         expected = 'tests attribute not found in %s' % filename
         try:
-            apie.parser.parseFile(filename)
+            lib.restbot.parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -43,7 +43,7 @@ class test_parser_file(TestCase):
         result = None
         expected = 'path attribute not found in %s' % filename
         try:
-            apie.parser.parseFile(filename)
+            lib.restbot.parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -54,7 +54,7 @@ class test_parser_file(TestCase):
         result = None
         expected = 'name attribute not found in %s' % filename
         try:
-            apie.parser.parseFile(filename)
+            lib.restbot.parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -65,7 +65,7 @@ class test_parser_file(TestCase):
         result = None
         expected = 'expected_* attribute not found in %s' % filename
         try:
-            apie.parser.parseFile(filename)
+            lib.restbot.parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
@@ -77,7 +77,7 @@ class test_parser_file(TestCase):
         result = None
         expected = 'request attribute not found in %s' % filename
         try:
-            apie.parser.parseFile(filename)
+            lib.restbot.parser.parseFile(filename)
         except Exception as e:
             result = str(e)
 
