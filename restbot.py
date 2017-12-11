@@ -1,25 +1,24 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
-import lib.restbot.parser
-import lib.restbot.header_parser
-import lib.restbot.asserter
-import lib.restbot.tester
 from os.path import dirname,realpath
+import app.restbot.parser
+import app.restbot.header_parser
+import app.restbot.asserter
+import app.restbot.tester
 
 def main(args):
     global_headers = {}
     if args.get('header_file') is not None:
-        global_headers = lib.restbot.header_parser.parseFile(args['header_file'])
+        global_headers = app.restbot.header_parser.parseFile(args['header_file'])
 
     global_headers['Content-Type'] = 'application/json'
-    
-    testdata = lib.restbot.parser.parseFile(args['filename'])
+
+    testdata = app.restbot.parser.parseFile(args['filename'])
     url = testdata['url']
     for item in testdata['tests']:
         test = item['test']
         expected = item['expected']
-        test_result, data = lib.restbot.tester.doTest(url,test,expected,global_headers)
+        test_result, data = app.restbot.tester.doTest(url,test,expected,global_headers)
         print("Test: %s" % test['name'])
         if(test_result):
             print("Result: OK")
