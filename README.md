@@ -43,8 +43,14 @@ tests:
       request: 'GET'
       path: '/'
       expected_content: "Built for developers"
+```
 
-$ ./restbot.py github.yaml
-OK GitHub is online
-OK GitHub contains 'Built for developers'
+Example usage restbot:
+```
+$ restbot.py ~/Downloads/github-it/github.yaml
+Test: GitHub is online
+Result: OK
+
+Test: GitHub contains 'Built for developers'
+Result: OK
 ```
