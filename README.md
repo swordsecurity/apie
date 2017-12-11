@@ -31,6 +31,7 @@ usage: restbot.py [-h] [--header_file HEADER_FILE]
 
 ## Test file
 A test file needs the following:
+|                      |                           |
 | -------------------- | ------------------------- |
 | **url** (required)   | url of API endpoint       |
 | **tests** (required) | list of specified tests   |
