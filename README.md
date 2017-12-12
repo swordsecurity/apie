@@ -23,10 +23,9 @@ pip3 install -r requirements.txt
 
 ## Usage
 ```
-usage: restbot.py [-h] [--header_file HEADER_FILE]
-                  [--example_script EXAMPLE_SCRIPT]
-                  [--example_header_file EXAMPLE_HEADER_FILE]
-                  filename
+usage: restbot.py [-h] [--sample-script SAMPLE_SCRIPT]
+                  [--sample-header-script SAMPLE_HEADER_SCRIPT]
+                  test_script
 ```
 
 ## Test file
@@ -82,3 +81,16 @@ Result: OK
 Test: GitHub contains 'Built for developers'
 Result: OK
 ```
+
+## Extra's
+### Header file (--header_file)
+The format Headers (see Headers) is used to define headers that are used in each test.
+
+### Sample test script (--sample-script)
+The --sample_script to show a sample of a working test script.
+
+### Sample header script (--sample-header-script)
+The --sample_header_script to show a sample of a working header script.
+
+## License
+Licensed under The MIT License (MIT).
