@@ -8,22 +8,30 @@ import app.restbot.tester
 
 def main(args):
     global_headers = {}
-    if args.get('sample_header_script') is not None:
-        global_headers = app.restbot.header_parser.parseFile(args['sample_header_script'])
+    if args.get('headers_script') is not None:
+        global_headers = app.restbot.header_parser.parseFile(args['headers_script'])
 
     global_headers['Content-Type'] = 'application/json'
 
     testdata = app.restbot.parser.parseFile(args['test_script'])
     url = testdata['url']
+    verifySsl = args.get('insecure') is False
+    if verifySsl is False:
+        import urllib3,time
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        print("InsecureRequestWarning: Unverified HTTPS request are going to be made")
+        time.sleep(3)
+
     for item in testdata['tests']:
         test = item['test']
         expected = item['expected']
-        test_result, data = app.restbot.tester.doTest(url,test,expected,global_headers)
+        test_result, data = app.restbot.tester.doTest(url,test,expected,global_headers,verifySsl)
         print("Test: %s" % test['name'])
         if(test_result):
             print("Result: OK")
         else:
-            exp_type = expected.keys()[0]
+            print(expected)
+            exp_type = list(expected.keys())[0]
             actual_type = 'actual_%s' % exp_type.replace('expected_','')
             expected[actual_type] = data
             print("Result: ERROR")
@@ -40,11 +48,12 @@ if __name__ == '__main__':
         with open(dirname(realpath(__file__)) + "/tests/assets/headerfile.yaml",'r') as f:
             print(f.read())
             exit()
-
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("test_script", help="Test script (.yaml)")
+    parser.add_argument("--headers-script", help="Headers script, using name,value format (.yaml)")
     parser.add_argument("--sample-script", help="Show sample of tests YAML file")
     parser.add_argument("--sample-header-script", help="Show sample of headers YAML file")
+    parser.add_argument('-i','--insecure',help='Do not verify SSL certificates (insecure)',action='store_true')
     argv = parser.parse_args()
     main(vars(argv))

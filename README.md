@@ -23,7 +23,8 @@ pip3 install -r requirements.txt
 
 ## Usage
 ```
-usage: restbot.py [-h] [--sample-script SAMPLE_SCRIPT]
+usage: restbot.py [-h] [--headers_script HEADERS_SCRIPT]
+                  [--sample-script SAMPLE_SCRIPT]
                   [--sample-header-script SAMPLE_HEADER_SCRIPT]
                   test_script
 ```
@@ -83,8 +84,8 @@ Result: OK
 ```
 
 ## Extra's
-### Header file (--header_file)
-The format Headers (see Headers) is used to define headers that are used in each test.
+### Header file (--headers-script)
+Specify a file to load headers from. The format Headers (see Headers) is used to define headers that are used in each test.
 
 ### Sample test script (--sample-script)
 Use--sample-script to show a sample of a working test script.
