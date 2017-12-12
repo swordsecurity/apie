@@ -87,10 +87,10 @@ Result: OK
 The format Headers (see Headers) is used to define headers that are used in each test.
 
 ### Sample test script (--sample-script)
-The --sample_script to show a sample of a working test script.
+Use--sample-script to show a sample of a working test script.
 
 ### Sample header script (--sample-header-script)
-The --sample_header_script to show a sample of a working header script.
+Use --sample-header-script to show a sample of a working header script.
 
 ## License
 Licensed under The MIT License (MIT).
