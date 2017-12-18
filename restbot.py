@@ -5,6 +5,7 @@ import app.restbot.parser
 import app.restbot.header_parser
 import app.restbot.asserter
 import app.restbot.tester
+import time
 
 def main(args):
     global_headers = {}
@@ -17,11 +18,14 @@ def main(args):
     url = testdata['url']
     verifySsl = args.get('insecure') is False
     if verifySsl is False:
-        import urllib3,time
+        import urllib3
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         print("InsecureRequestWarning: Unverified HTTPS request are going to be made")
         time.sleep(3)
 
+    test_total = 0
+    error_total = 0
+    time_begin = time.time()
     for item in testdata['tests']:
         test = item['test']
         expected = item['expected']
@@ -30,13 +34,24 @@ def main(args):
         if(test_result):
             print("Result: OK")
         else:
+            error_total += 1
             print(expected)
             exp_type = list(expected.keys())[0]
             actual_type = 'actual_%s' % exp_type.replace('expected_','')
             expected[actual_type] = data
             print("Result: ERROR")
             print(expected)
+        test_total += 1
         print("") #newline
+    time_total = int(round((time.time()-time_begin) * 1000))
+
+    print("Time: %d ms" % time_total)
+    print("")
+    if error_total != 0:
+        print("FAILURE (%d tests, %d failures)" % (test_total,error_total))
+    else:
+        print("OK (%d tests, %d assertions)" % (test_total,test_total))
+
 
 if __name__ == '__main__':
     import sys
