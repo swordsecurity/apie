@@ -35,7 +35,6 @@ def main(args):
             print("Result: OK")
         else:
             error_total += 1
-            print(expected)
             exp_type = list(expected.keys())[0]
             actual_type = 'actual_%s' % exp_type.replace('expected_','')
             expected[actual_type] = data
