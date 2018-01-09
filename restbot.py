@@ -51,23 +51,38 @@ def main(args):
     else:
         print("OK (%d tests, %d assertions)" % (test_total,test_total))
 
+def sample_testfile():
+    print("""
+url: "http://localhost"
+tests:
+- name: "Website is live"
+  path: "/"
+  request: "GET"
+  expected_status: 200
+""".strip())
+
+def sample_headerfile():
+    print("""
+headers:
+    - name: 'Authorization'
+      value: 'Bearer [token]'
+""".strip())
+
 
 if __name__ == '__main__':
     import sys
-    if '--sample-script' in sys.argv:
-        with open(dirname(realpath(__file__)) + "/tests/assets/testfile.yaml",'r') as f:
-            print(f.read())
-            exit()
-    if '--sample-header-script' in sys.argv:
-        with open(dirname(realpath(__file__)) + "/tests/assets/headerfile.yaml",'r') as f:
-            print(f.read())
-            exit()
+    if '--sample' in sys.argv:
+        sample_testfile()
+        exit()
+    if '--sample-header' in sys.argv:
+        sample_headerfile()
+        exit()
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("test_script", help="Test script (.yaml)")
     parser.add_argument("--headers-script", help="Headers script, using name,value format (.yaml)")
-    parser.add_argument("--sample-script", help="Show sample of tests YAML file")
-    parser.add_argument("--sample-header-script", help="Show sample of headers YAML file")
+    parser.add_argument("--sample", help="Show sample of tests YAML file")
+    parser.add_argument("--sample-header", help="Show sample of headers YAML file")
     parser.add_argument('-i','--insecure',help='Do not verify SSL certificates (insecure)',action='store_true')
     argv = parser.parse_args()
     main(vars(argv))
