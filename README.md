@@ -23,10 +23,22 @@ pip3 install -r requirements.txt
 
 ## Usage
 ```
-usage: restbot.py [-h] [--headers_script HEADERS_SCRIPT]
-                  [--sample-script SAMPLE_SCRIPT]
-                  [--sample-header-script SAMPLE_HEADER_SCRIPT]
+usage: restbot.py [-h] [--headers-script HEADERS_SCRIPT] [--sample SAMPLE]
+                  [--sample-header SAMPLE_HEADER] [-i] [-e]
                   test_script
+
+positional arguments:
+  test_script           Test script (.yaml)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --headers-script HEADERS_SCRIPT
+                        Headers script, using name,value format (.yaml)
+  --sample SAMPLE       Show sample of tests YAML file
+  --sample-header SAMPLE_HEADER
+                        Show sample of headers YAML file
+  -i, --insecure        Do not verify SSL certificates (insecure)
+  -e, --errors          Show only errors
 ```
 
 ## Test file

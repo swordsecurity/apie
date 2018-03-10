@@ -16,6 +16,7 @@ def main(args):
 
     testdata = app.restbot.parser.parseFile(args['test_script'])
     url = testdata['url']
+    showOnlyErrors = args.get('errors')
     verifySsl = args.get('insecure') is False
     if verifySsl is False:
         import urllib3
@@ -30,18 +31,25 @@ def main(args):
         test = item['test']
         expected = item['expected']
         test_result, data = app.restbot.tester.doTest(url,test,expected,global_headers,verifySsl)
-        print("Test: %s" % test['name'])
-        if(test_result):
-            print("Result: OK")
-        else:
+
+        if not test_result:
             error_total += 1
             exp_type = list(expected.keys())[0]
             actual_type = 'actual_%s' % exp_type.replace('expected_','')
             expected[actual_type] = data
+
+        if test_result:
+            if not showOnlyErrors:
+                print("Test: %s" % test['name'])
+                print("Result: OK")
+                print("") #newline
+        else:
+            print("Test: %s" % test['name'])
             print("Result: ERROR")
             print(expected)
+            print("") #newline
+
         test_total += 1
-        print("") #newline
     time_total = int(round((time.time()-time_begin) * 1000))
 
     print("Time: %d ms" % time_total)
@@ -84,5 +92,6 @@ if __name__ == '__main__':
     parser.add_argument("--sample", help="Show sample of tests YAML file")
     parser.add_argument("--sample-header", help="Show sample of headers YAML file")
     parser.add_argument('-i','--insecure',help='Do not verify SSL certificates (insecure)',action='store_true')
+    parser.add_argument('-e','--errors',help='Show only errors',action='store_true')
     argv = parser.parse_args()
     main(vars(argv))
