@@ -88,7 +88,7 @@ tests:
 
 Example usage restbot:
 ```
-$ restbot.py ~/Downloads/github-it/github.yaml
+$ python restbot/restbot.py ./github.yaml
 Test: GitHub is online
 Result: OK
 
@@ -107,4 +107,4 @@ Use--sample-script to show a sample of a working test script.
 Use --sample-header-script to show a sample of a working header script.
 
 ## License
-Licensed under The MIT License (MIT).
+Licensed under AGPL.
