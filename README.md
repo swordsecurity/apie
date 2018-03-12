@@ -60,6 +60,7 @@ The following parameters need to be used in a test:
 | **expected_status** (optional) | expected status code |
 | **expected_content** (optional) | expected value in response (case-insensitive) |
 | **expected_value** (optional) | expected exact value |
+| **sleep** (optional) | sleep specified seconds after test |
 | **headers** (optional) | list of specified headers |
 
 #### Headers (optional)
