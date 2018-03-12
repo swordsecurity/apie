@@ -18,7 +18,8 @@ To run Restbot, you will need the following:
 Install dependencies from requirements.txt
 ```
 git clone [this repository]
-pip3 install -r requirements.txt
+cd restbot/restbot
+sudo pip3 install -r requirements.txt
 ```
 
 ## Usage
@@ -41,7 +42,32 @@ optional arguments:
   -e, --errors          Show only errors
 ```
 
-## Test file
+## Examples
+Example test script (github.yaml):
+```
+url: "https://github.com"
+tests:
+    - name: "GitHub is online"
+      request: 'GET'
+      path: '/'
+      expected_status: 200
+    - name: "GitHub contains 'Built for developers'"
+      request: 'GET'
+      path: '/'
+      expected_content: "Built for developers"
+```
+
+Example usage restbot:
+```
+$ python restbot/restbot.py ./github.yaml
+Test: GitHub is online
+Result: OK
+
+Test: GitHub contains 'Built for developers'
+Result: OK
+```
+
+## How to write a test file?
 A test file needs the following:
 
 | | |
@@ -71,30 +97,6 @@ The following format is used to define headers in a test:
 | **name** | name of the header |
 | **value** | value of the header |
 
-## Examples
-Example test script (github.yaml):
-```
-url: "https://github.com"
-tests:
-    - name: "GitHub is online"
-      request: 'GET'
-      path: '/'
-      expected_status: 200
-    - name: "GitHub contains 'Built for developers'"
-      request: 'GET'
-      path: '/'
-      expected_content: "Built for developers"
-```
-
-Example usage restbot:
-```
-$ python restbot/restbot.py ./github.yaml
-Test: GitHub is online
-Result: OK
-
-Test: GitHub contains 'Built for developers'
-Result: OK
-```
 
 ## Extra's
 ### Header file (--headers-script)
@@ -107,4 +109,4 @@ Use--sample-script to show a sample of a working test script.
 Use --sample-header-script to show a sample of a working header script.
 
 ## License
-Licensed under AGPL.
+Licensed under AGPL3.
