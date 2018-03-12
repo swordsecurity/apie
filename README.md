@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="./docs/assets/logo.png"><br><br>
-</div>
+<img style="max-height:120px;" src="./docs/assets/logo.png"><br><br>
 
 # Restbot: Test Restful JSON API's using YAML files
 ## Features
