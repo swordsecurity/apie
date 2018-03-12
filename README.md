@@ -3,7 +3,7 @@
 # Restbot: Test Restful JSON API's using YAML files
 ## Features
 - Write test script in YAML.
-- GET, POST, PUT, DELETE requests.
+- GET, POST, PUT, DELETE requests supported.
 - Assert with status, content (includes, case-insensitive) or value (exact match)
 
 ## Prerequisites
