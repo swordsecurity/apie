@@ -50,6 +50,12 @@ def main(args):
             print("") #newline
 
         test_total += 1
+        # Support sleep field
+        if test.get('sleep'):
+            iseconds = int(test.get('sleep'))
+            print("~~~ sleeping for %d seconds" % iseconds)
+            time.sleep(iseconds)
+
     time_total = int(round((time.time()-time_begin) * 1000))
 
     print("Time: %d ms" % time_total)
