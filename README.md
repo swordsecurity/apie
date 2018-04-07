@@ -100,7 +100,7 @@ The following format is used to define headers in a test:
 Use -t to execute the test script as a test suite. A test suite contains multiple test scripts.
 
 ## How to write a test suit file?
-A test file needs the following:
+A test suite file needs the following:
 
 | | |
 |-|-|
