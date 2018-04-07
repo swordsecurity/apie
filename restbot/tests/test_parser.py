@@ -11,6 +11,12 @@ import app.restbot.parser
 
 class test_parser_file(TestCase):
 
+    def test_testsuit_fromfile(self):
+        filename = dirname(realpath(__file__)) + "/assets/testsuit1.yaml"
+        result = app.restbot.parser.testsuite_fromfile(filename)
+        expected = [{"name":"Test reminders (GET/POST/DELETE)","file":"test_reminders.yml"},{"name":"Test account (GET/POST/DELETE)","file":"test_accounts.yml"}]
+        self.assertEqual(expected,result)
+
     def test_parser_file(self):
         filename = dirname(realpath(__file__)) + "/assets/testfile.yaml"
         app.restbot.parser.parseFile(filename)

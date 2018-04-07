@@ -9,6 +9,24 @@ import json
 def main(args):
     print(parseFile(args['file']))
 
+def testsuite_fromfile(filename):
+    data = {}
+    filename = os.path.realpath(filename)
+    if not os.path.isfile(filename):
+        raise Exception('file %s is not found' % filename)
+
+    with open(filename) as f:
+        dataMap = yaml.safe_load(f)
+    if dataMap.get('tests') is None:
+        raise Exception('tests attribute not found in %s' % filename)
+
+    for test in dataMap.get('tests'):
+        for attribute in ['name','file']:
+            if test.get(attribute) is None:
+                raise Exception('%s attribute not found in %s' % (attribute,filename))
+
+    return dataMap['tests']
+
 def parseFile(filename):
     data = {}
     filename = os.path.realpath(filename)

@@ -23,7 +23,7 @@ sudo pip3 install -r requirements.txt
 ## Usage
 ```
 usage: restbot.py [-h] [--headers-script HEADERS_SCRIPT] [--sample SAMPLE]
-                  [--sample-header SAMPLE_HEADER] [-i] [-e]
+                  [--sample-header SAMPLE_HEADER] [-i] [-e] [-t]
                   test_script
 
 positional arguments:
@@ -38,6 +38,7 @@ optional arguments:
                         Show sample of headers YAML file
   -i, --insecure        Do not verify SSL certificates (insecure)
   -e, --errors          Show only errors
+  -t, --testsuite_file  Execute test scripts from testsuit YAML file
 ```
 
 ## Examples
@@ -95,6 +96,23 @@ The following format is used to define headers in a test:
 | **name** | name of the header |
 | **value** | value of the header |
 
+## Test suite (-t)
+Use -t to execute the test script as a test suite. A test suite contains multiple test scripts.
+
+## How to write a test suit file?
+A test file needs the following:
+
+| | |
+|-|-|
+| **tests** | list of specified tests   |
+
+### Tests
+The following parameters need to be used in a test:
+
+| | |
+|-|-|
+| **name** | name of the test |
+| **file** | relative path to test script |
 
 ## Extra's
 ### Header file (--headers-script)

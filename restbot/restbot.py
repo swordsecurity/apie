@@ -7,6 +7,18 @@ import app.restbot.asserter
 import app.restbot.tester
 import time
 
+def main_multiple(args):
+    testsuite_file = args.get("test_script")
+    testsuite = app.restbot.parser.testsuite_fromfile(testsuite_file)
+    for testsuite_item in testsuite:
+        name = testsuite_item["name"]
+        test_script = testsuite_item["file"]
+        args["test_script"] = test_script
+        print("============================")
+        print(name)
+        print("============================")
+        main(args)
+
 def main(args):
     global_headers = {}
     if args.get('headers_script') is not None:
@@ -99,5 +111,10 @@ if __name__ == '__main__':
     parser.add_argument("--sample-header", help="Show sample of headers YAML file")
     parser.add_argument('-i','--insecure',help='Do not verify SSL certificates (insecure)',action='store_true')
     parser.add_argument('-e','--errors',help='Show only errors',action='store_true')
+    parser.add_argument("-t","--testsuite_file", help="Execute test scripts from testsuit YAML file",action="store_true")
     argv = parser.parse_args()
-    main(vars(argv))
+    vargs = vars(argv)
+    if vargs.get("testsuite_file") != False:
+        main_multiple(vargs)
+    else:
+        main(vargs)

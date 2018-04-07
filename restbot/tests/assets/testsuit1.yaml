@@ -1,0 +1,5 @@
+tests: 
+    - name: "Test reminders (GET/POST/DELETE)" 
+      file: "test_reminders.yml"
+    - name: "Test account (GET/POST/DELETE)" 
+      file: "test_accounts.yml"
