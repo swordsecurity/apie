@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-from os.path import dirname,realpath
+import os
+from os.path import abspath,dirname,realpath
 import app.restbot.parser
 import app.restbot.header_parser
 import app.restbot.asserter
@@ -8,11 +9,13 @@ import app.restbot.tester
 import time
 
 def main_multiple(args):
-    testsuite_file = args.get("test_script")
+    testsuite_file = abspath(args.get("test_script"))
+    testsuite_dir = abspath(dirname(testsuite_file))
+    print("testsuite_dir",testsuite_dir)
     testsuite = app.restbot.parser.testsuite_fromfile(testsuite_file)
     for testsuite_item in testsuite:
         name = testsuite_item["name"]
-        test_script = testsuite_item["file"]
+        test_script = testsuite_dir + os.sep + testsuite_item["file"]
         args["test_script"] = test_script
         print("============================")
         print(name)
