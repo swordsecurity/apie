@@ -114,6 +114,18 @@ The following parameters need to be used in a test:
 | **name** | name of the test |
 | **file** | relative path to test script |
 
+## Example
+```
+$ cat testsuite.yml
+tests:
+    - name: "Test reminders (GET/POST/DELETE)"
+      file: "test_reminders.yml"
+    - name: "Test account (GET/POST/DELETE)"
+      file: "test_accounts.yml"
+    - name: "Test transactions with account 1 (GET/POST)"
+      file: "test_transactions.yml"
+```
+
 ## Extra's
 ### Header file (--headers-script)
 Specify a file to load headers from. The format Headers (see Headers) is used to define headers that are used in each test.
