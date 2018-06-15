@@ -64,6 +64,7 @@ Result: OK
 
 Test: GitHub contains 'Built for developers'
 Result: OK
+```
 
 ## Example with POST
 ```
