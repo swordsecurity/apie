@@ -64,6 +64,32 @@ Result: OK
 
 Test: GitHub contains 'Built for developers'
 Result: OK
+
+## Example with POST
+```
+url: "http://httpbin.org"
+tests:
+    - name: "Post data test"
+      request: "POST"
+      path: "/post"
+      data:
+          msg: "Hello world"
+          sender: "me"
+      expected_content: "Hello world"
+
+```
+
+## Example with PUT
+```
+url: "http://httpbin.org"
+tests:
+    - name: "Post data test"
+      request: "PUT"
+      path: "/put"
+      data:
+          msg: "Hello world"
+          sender: "me"
+      expected_content: "Hello world"
 ```
 
 ## How to write a test file?
